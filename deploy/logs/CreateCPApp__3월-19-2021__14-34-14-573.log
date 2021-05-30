@@ -1,0 +1,4 @@
+ERROR(0) 2021-03-19 14:34:14,593: CreateCPApp's argument list.
+ERROR(0) 2021-03-19 14:34:14,593: args[0] = C:\ptc\SVNRepo\TEST00001
+ERROR(0) 2021-03-19 14:34:14,593: args[1] = 14
+GENERAL(0) 2021-03-19 14:34:15,713: Change Package created : 224:3

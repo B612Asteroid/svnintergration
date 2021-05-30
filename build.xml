@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name= "deploy_svn_lib" default="deploy-all" basedir=".">
+	<description></description>
+	<property name="binDir" location="./bin" />
+	<property name="lib.dir" location="./lib" />
+	<property name="deploy.dir" location="./deploy" />
+	<property name="rootDir" location="./" />
+		
+	<property name="jarDeployDir" location="D:/dev/integrations/svn/" />
+		
+	<jar destfile="${deploy.dir}/lib/svnintergration.jar">
+		<fileset dir="${binDir}">
+			<include name="**/*.class"/>
+		</fileset>
+	</jar>
+	
+	<fileset id="fileset.deploy.lib" dir="${lib.dir}">
+		<include name="**/*.jar" />
+	</fileset>
+	
+	<target name="deploy-lib">
+		<echo message="copy lib" />
+		<copy todir="${jarDeployDir}/deploy/lib" verbose="true">
+			<fileset refid="fileset.deploy.lib" />
+		</copy>
+	</target>
+	
+	<fileset id="fileset.deploy.config" dir="${rootDir}/deploy">
+		<include name="**/*" />
+	</fileset>
+	
+	<target name="deploy-config">
+		<echo message="file config to SVN" />
+		<copy todir="${jarDeployDir}/deploy" verbose="true">
+			<fileset refid="fileset.deploy.config" />
+		</copy>
+	</target>
+	
+	<target name="deploy-all" depends="deploy-config, deploy-lib"></target>
+</project>
